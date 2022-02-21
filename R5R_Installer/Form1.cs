@@ -83,14 +83,14 @@ namespace R5R_Installer
                     hasOpenedTorrent = true;
                 }
                 bitSwarm.Start();
-                button1.Text = "Pause";
+                button2.Text = "Pause";
                 hasStarted = true;
 
             }
             else
             {
                 bitSwarm.Pause();
-                button1.Text = "Resume/Start";
+                button2.Text = "Resume/Start";
                 hasStarted = false;
             }
         }
@@ -158,6 +158,7 @@ namespace R5R_Installer
             }
 
         }
+
 
         private static Random random = new Random();
         public static string RandomString(int length)
