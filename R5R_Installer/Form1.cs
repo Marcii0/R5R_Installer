@@ -80,7 +80,6 @@ namespace R5R_Installer
                 bitSwarm.Open("magnet:?xt=urn:btih:KCQJQT6DV2V4XWCOKCRM4EJELRLHQKI5&dn=R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM&tr=udp%3A%2F%2Fwambo.club%3A1337%2Fannounce");
                 bitSwarm.Start();
             }
-            else;
         }
 
         private void BitSwarm_MetadataReceived(object source, BitSwarm.MetadataReceivedArgs e)
@@ -136,8 +135,8 @@ namespace R5R_Installer
             }
             else
             {
-                downRate.Text = String.Format("{0:n0}", (e.Stats.DownRate / 1024)) + " KB/s";
-                downRateAvg.Text = String.Format("{0:n0}", (e.Stats.AvgRate / 1024)) + " KB/s";
+                downRate.Text = String.Format("{0:n0}", (e.Stats.DownRate / 1024/1024)) + " MB/s";
+                downRateAvg.Text = String.Format("{0:n0}", (e.Stats.AvgRate / 1024/1024)) + " MB/s";
                 eta.Text = TimeSpan.FromSeconds((e.Stats.ETA + e.Stats.AvgETA) / 2).ToString(@"hh\:mm\:ss");
                 dpeers.Text = e.Stats.PeersTotal.ToString();
 
