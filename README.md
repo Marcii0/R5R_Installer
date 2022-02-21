@@ -1,4 +1,4 @@
-# R5R_Installer
+# R5R_Installer\n
 Made by Kairi#0010 ; a few lines(a lot) of code taken from I-Am-Zee's Installer.
 Hey
 This is an installer is made for R5Reloaded.
