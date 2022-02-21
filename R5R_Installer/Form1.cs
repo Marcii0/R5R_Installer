@@ -74,11 +74,18 @@ namespace R5R_Installer
             bitSwarm.StatsUpdated += BitSwarm_StatsUpdated;
             bitSwarm.MetadataReceived += BitSwarm_MetadataReceived;
             bitSwarm.StatusChanged += BitSwarm_StatusChanged;
-
+            bitSwarm.Open("magnet:?xt=urn:btih:KCQJQT6DV2V4XWCOKCRM4EJELRLHQKI5&dn=R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM&tr=udp%3A%2F%2Fwambo.club%3A1337%2Fannounce");
             if (!hasStarted)
             {
-                bitSwarm.Open("magnet:?xt=urn:btih:KCQJQT6DV2V4XWCOKCRM4EJELRLHQKI5&dn=R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM&tr=udp%3A%2F%2Fwambo.club%3A1337%2Fannounce");
                 bitSwarm.Start();
+                button1.Text = "Pause";
+                hasStarted = true;
+            }
+            else
+            {
+                bitSwarm.Pause();
+                button1.Text = "Resume/Start";
+                hasStarted = false;
             }
         }
 
@@ -110,8 +117,6 @@ namespace R5R_Installer
                 string fileName = "";
                 if (torrent.file.name != null) fileName = torrent.file.name;
                 if (torrent != null) { torrent.Dispose(); torrent = null; }
-
-                MessageBox.Show("Downloaded successfully!\r\n" + "Starting detours and scripts install.");
                 StartR5RDetoursAndScripts();
             }
             else
@@ -120,7 +125,6 @@ namespace R5R_Installer
                 if (e.Status == 2)
                 {
                     output.Text += "\r\n\r\n" + "An error occurred :(\r\n\t" + e.ErrorMsg;
-                    MessageBox.Show("An error occured :( \r\n" + e.ErrorMsg);
                 }
             }
 
