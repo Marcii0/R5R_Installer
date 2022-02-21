@@ -50,7 +50,7 @@ namespace R5R_Installer
                 textBox1.Text = Ddirectory;
             }
         }
-        bool hasStarted = false;
+        bool hasStarted = false, hasOpenedTorrent = false;
         private void button2_Click(object sender, EventArgs e)
         {
             opts = new Options();
@@ -74,12 +74,18 @@ namespace R5R_Installer
             bitSwarm.StatsUpdated += BitSwarm_StatsUpdated;
             bitSwarm.MetadataReceived += BitSwarm_MetadataReceived;
             bitSwarm.StatusChanged += BitSwarm_StatusChanged;
-            bitSwarm.Open("magnet:?xt=urn:btih:KCQJQT6DV2V4XWCOKCRM4EJELRLHQKI5&dn=R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM&tr=udp%3A%2F%2Fwambo.club%3A1337%2Fannounce");
+
             if (!hasStarted)
             {
+                if (!hasOpenedTorrent)
+                {
+                    bitSwarm.Open("magnet:?xt=urn:btih:KCQJQT6DV2V4XWCOKCRM4EJELRLHQKI5&dn=R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM&tr=udp%3A%2F%2Fwambo.club%3A1337%2Fannounce");
+                    hasOpenedTorrent = true;
+                }
                 bitSwarm.Start();
                 button1.Text = "Pause";
                 hasStarted = true;
+
             }
             else
             {
@@ -117,6 +123,8 @@ namespace R5R_Installer
                 string fileName = "";
                 if (torrent.file.name != null) fileName = torrent.file.name;
                 if (torrent != null) { torrent.Dispose(); torrent = null; }
+
+                MessageBox.Show("Downloaded successfully!\r\n" + "Starting detours and scripts install.");
                 StartR5RDetoursAndScripts();
             }
             else
@@ -125,6 +133,7 @@ namespace R5R_Installer
                 if (e.Status == 2)
                 {
                     output.Text += "\r\n\r\n" + "An error occurred :(\r\n\t" + e.ErrorMsg;
+                    MessageBox.Show("An error occured :( \r\n" + e.ErrorMsg);
                 }
             }
 
@@ -139,8 +148,8 @@ namespace R5R_Installer
             }
             else
             {
-                downRate.Text = String.Format("{0:n0}", (e.Stats.DownRate / 1024/1024)) + " MB/s";
-                downRateAvg.Text = String.Format("{0:n0}", (e.Stats.AvgRate / 1024/1024)) + " MB/s";
+                downRate.Text = String.Format("{0:n0}", ( e.Stats.DownRate / 1024 )) + " KB/s";
+                downRateAvg.Text = String.Format("{0:n0}", ( e.Stats.AvgRate / 1024 )) + " KB/s";
                 eta.Text = TimeSpan.FromSeconds((e.Stats.ETA + e.Stats.AvgETA) / 2).ToString(@"hh\:mm\:ss");
                 dpeers.Text = e.Stats.PeersTotal.ToString();
 
