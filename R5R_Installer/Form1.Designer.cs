@@ -48,6 +48,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.discordLink = new System.Windows.Forms.LinkLabel();
             this.removeButton = new System.Windows.Forms.Button();
+            this.URDetours = new System.Windows.Forms.Button();
+            this.URScripts = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -80,7 +82,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(54, 169);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(149, 54);
+            this.button2.Size = new System.Drawing.Size(134, 54);
             this.button2.TabIndex = 3;
             this.button2.Text = "Download";
             this.button2.UseVisualStyleBackColor = true;
@@ -212,11 +214,33 @@
             this.removeButton.UseVisualStyleBackColor = true;
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
+            // URDetours
+            // 
+            this.URDetours.Location = new System.Drawing.Point(54, 289);
+            this.URDetours.Name = "URDetours";
+            this.URDetours.Size = new System.Drawing.Size(134, 57);
+            this.URDetours.TabIndex = 19;
+            this.URDetours.Text = "Update/Reinstall Detours";
+            this.URDetours.UseVisualStyleBackColor = true;
+            this.URDetours.Click += new System.EventHandler(this.URDetours_Click);
+            // 
+            // URScripts
+            // 
+            this.URScripts.Location = new System.Drawing.Point(54, 229);
+            this.URScripts.Name = "URScripts";
+            this.URScripts.Size = new System.Drawing.Size(134, 54);
+            this.URScripts.TabIndex = 20;
+            this.URScripts.Text = "Update/Reinstall Scripts";
+            this.URScripts.UseVisualStyleBackColor = true;
+            this.URScripts.Click += new System.EventHandler(this.URScripts_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.URScripts);
+            this.Controls.Add(this.URDetours);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.discordLink);
             this.Controls.Add(this.label8);
@@ -266,6 +290,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.LinkLabel discordLink;
         private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Button URDetours;
+        private System.Windows.Forms.Button URScripts;
     }
 }
 

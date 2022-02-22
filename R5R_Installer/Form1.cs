@@ -240,6 +240,65 @@ namespace R5R_Installer
             MessageBox.Show("Removed everything in the set Download folder!");
         }
 
+        private void URDetours_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                directoryTxT = new FileStream("Directory.txt", FileMode.Open, FileAccess.ReadWrite);
+                DirectoryInfo direcInf = null;
+                using (StreamReader str = new StreamReader(directoryTxT))
+                {
+                    direcInf = new DirectoryInfo(str.ReadLine());
+                }
+                WebClient scriptsDownloader = new WebClient();
+                string rstring = RandomString(10);
+                string dString = scriptsDownloader.DownloadString("https://api.r5rmodmanager.com/v1.php?data=detours");
+                scriptsDownloader.DownloadFile(new Uri(dString), direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip");
+
+                var dExtract = ZipFile.Open(direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip", ZipArchiveMode.Read);
+                ZipArchiveExtensions.ExtractToDirectory(dExtract, direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/", true);
+                dExtract.Dispose();
+                File.Delete(direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"You have to set your directory by doing the following::-1.Go to app's folder:-2.Create a new TEXT File called Directory.txt:-3.go to the installed game's folder, step back ONCE, copy the folder path from the top of the file explorer:-(for ex.D:\ApexR5\R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM -> move back once -> 'D:\ApexR5\' <- copy that):-4.paste that path into the Directory.txt file.".Replace(":-", System.Environment.NewLine));
+            }
+        }
+
+        private void URScripts_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                directoryTxT = new FileStream("Directory.txt", FileMode.Open, FileAccess.ReadWrite);
+                DirectoryInfo direcInf = null;
+                using (StreamReader str = new StreamReader(directoryTxT))
+                {
+                    direcInf = new DirectoryInfo(str.ReadLine());
+                }
+                WebClient scriptsDownloader = new WebClient();
+                scriptsDownloader.DownloadFile(new Uri("https://github.com/Mauler125/scripts_r5/archive/refs/heads/S3_N1094.zip"), direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/newscripts.zip");
+
+
+                if (Directory.Exists(direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/scripts"))
+                {
+                    Directory.Delete(direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/scripts", true);
+                }
+
+                var scriptszip = ZipFile.Open(direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/newscripts.zip", ZipArchiveMode.Read);
+                ZipArchiveExtensions.ExtractToDirectory(scriptszip, direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/", true);
+                scriptszip.Dispose();
+                Thread.Sleep(1000);
+                File.Delete(direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/newscripts.zip");
+
+                Directory.Move(direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/scripts_r5-S3_N1094", direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/scripts");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"You have to set your directory by doing the following::-1.Go to app's folder:-2.Create a new TEXT File called Directory.txt:-3.go to the installed game's folder, step back ONCE, copy the folder path from the top of the file explorer:-(for ex.D:\ApexR5\R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM -> move back once -> 'D:\ApexR5\' <- copy that):-4.paste that path into the Directory.txt file.".Replace(":-", System.Environment.NewLine));
+            }
+        }
+
         private void discordLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(e.Link.LinkData as string);
