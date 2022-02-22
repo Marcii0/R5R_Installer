@@ -18,6 +18,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace R5R_Installer
 {
@@ -28,6 +29,8 @@ namespace R5R_Installer
         static BitSwarm bitSwarm;
         static Options opts;
         string Ddirectory;
+        FileStream directoryTxT = null;
+        FolderBrowserDialog dialog = new FolderBrowserDialog();
         public Form1()
         {
             InitializeComponent();
@@ -37,12 +40,12 @@ namespace R5R_Installer
         {
             LinkLabel.Link link = new LinkLabel.Link();
             link.LinkData = "https://www.discord.gg/r5reloaded";
-            discordLink.Links.Add(link);    
+            discordLink.Links.Add(link);
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
             DialogResult result = dialog.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -53,6 +56,11 @@ namespace R5R_Installer
         bool hasStarted = false, hasOpenedTorrent = false;
         private void button2_Click(object sender, EventArgs e)
         {
+            if (dialog.SelectedPath == "")
+            {
+                MessageBox.Show("You have not set a directory yet!");
+                return;
+            }
             opts = new Options();
 
             opts.FolderComplete = Ddirectory;
@@ -93,8 +101,12 @@ namespace R5R_Installer
                 button2.Text = "Resume/Start";
                 hasStarted = false;
             }
+            directoryTxT = new FileStream("Directory.txt", FileMode.OpenOrCreate);
+            using(StreamWriter writer = new StreamWriter(directoryTxT, Encoding.UTF8))
+            {
+                writer.WriteLine(Ddirectory);
+            }
         }
-
         private void BitSwarm_MetadataReceived(object source, BitSwarm.MetadataReceivedArgs e)
         {
             if (InvokeRequired)
@@ -212,8 +224,20 @@ namespace R5R_Installer
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void removeButton_Click(object sender, EventArgs e)
         {
+            directoryTxT = new FileStream("Directory.txt", FileMode.Open, FileAccess.ReadWrite);
+            DirectoryInfo direcInf = null;
+            using (StreamReader str = new StreamReader(directoryTxT))
+            {
+                direcInf = new DirectoryInfo(str.ReadLine());
+            }
+            DirectoryInfo[] files = direcInf.GetDirectories();
+            foreach (DirectoryInfo subd in files)
+            {
+                subd.Delete(true);
+            }
+            MessageBox.Show("Removed everything in the Download folder!");
         }
 
         private void discordLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

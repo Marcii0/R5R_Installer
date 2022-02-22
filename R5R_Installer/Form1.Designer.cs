@@ -47,7 +47,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.discordLink = new System.Windows.Forms.LinkLabel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -202,22 +202,22 @@
             this.discordLink.Text = "discord.gg/r5reloaded";
             this.discordLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.discordLink_LinkClicked);
             // 
-            // button3
+            // removeButton
             // 
-            this.button3.Location = new System.Drawing.Point(54, 229);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(149, 54);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Download and Install\r\nScripts + Detours\r\n";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.removeButton.Location = new System.Drawing.Point(644, 340);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(127, 42);
+            this.removeButton.TabIndex = 18;
+            this.removeButton.Text = "REMOVE";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.removeButton);
             this.Controls.Add(this.discordLink);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -265,7 +265,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.LinkLabel discordLink;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button removeButton;
     }
 }
 
