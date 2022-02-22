@@ -50,6 +50,7 @@
             this.removeButton = new System.Windows.Forms.Button();
             this.URDetours = new System.Windows.Forms.Button();
             this.URScripts = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -234,11 +235,22 @@
             this.URScripts.UseVisualStyleBackColor = true;
             this.URScripts.Click += new System.EventHandler(this.URScripts_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 345);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(321, 48);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "For updating Scripts/Detours you don\'t need to select\r\n the Download Directory, y" +
+    "ou just have to make\r\n sure you have Directory.txt!";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.URScripts);
             this.Controls.Add(this.URDetours);
             this.Controls.Add(this.removeButton);
@@ -292,6 +304,7 @@
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button URDetours;
         private System.Windows.Forms.Button URScripts;
+        private System.Windows.Forms.Label label9;
     }
 }
 
