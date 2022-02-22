@@ -125,7 +125,10 @@ namespace R5R_Installer
                 if (torrent != null) { torrent.Dispose(); torrent = null; }
 
                 MessageBox.Show("Downloaded successfully!\r\n" + "Starting detours and scripts install.");
-                
+
+                StartR5RDetoursAndScripts();
+                MessageBox.Show("Starting Detours and Scripts installation!");
+
             }
             else
             {
@@ -170,12 +173,9 @@ namespace R5R_Installer
 
         private void StartR5RDetoursAndScripts()
         {
-            MessageBox.Show("Hello");
             if(Directory.Exists(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/"))
             {
-                MessageBox.Show("Hallo");
 
-                    MessageBox.Show("Hillo");
                     string rstring = RandomString(10);
                     WebClient scriptsDownloader = new WebClient();
                     string dString = scriptsDownloader.DownloadString("https://api.r5rmodmanager.com/v1.php?data=detours");
@@ -214,8 +214,6 @@ namespace R5R_Installer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            StartR5RDetoursAndScripts();
-            MessageBox.Show("Starting Detours and Scripts installation!");
         }
 
         private void discordLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
