@@ -263,7 +263,7 @@ namespace R5R_Installer
             catch (Exception ex)
             {
                 MessageBox.Show(@"You have to set your directory by doing the following::-1.Go to app's folder:-2.Create a new TEXT File called Directory.txt:-3.go to the installed game's folder, step back ONCE, copy the folder path from the top of the file explorer:-(for ex.D:\ApexR5\R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM -> move back once -> 'D:\ApexR5\' <- copy that):-4.paste that path into the Directory.txt file.".Replace(":-", System.Environment.NewLine));
-            }
+                }
         }
 
         private void URScripts_Click(object sender, EventArgs e)

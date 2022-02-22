@@ -55,6 +55,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBox1.Location = new System.Drawing.Point(12, 77);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(250, 22);
@@ -62,6 +63,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button1.Location = new System.Drawing.Point(92, 105);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -72,6 +74,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(68, 45);
             this.label1.Name = "label1";
@@ -81,6 +84,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button2.Location = new System.Drawing.Point(54, 169);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(134, 54);
@@ -91,6 +95,7 @@
             // 
             // output
             // 
+            this.output.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.output.Location = new System.Drawing.Point(211, 317);
             this.output.Name = "output";
             this.output.Size = new System.Drawing.Size(339, 22);
@@ -98,6 +103,7 @@
             // 
             // downRate
             // 
+            this.downRate.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.downRate.Location = new System.Drawing.Point(639, 127);
             this.downRate.Name = "downRate";
             this.downRate.Size = new System.Drawing.Size(100, 22);
@@ -105,6 +111,7 @@
             // 
             // downRateAvg
             // 
+            this.downRateAvg.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.downRateAvg.Location = new System.Drawing.Point(639, 164);
             this.downRateAvg.Name = "downRateAvg";
             this.downRateAvg.Size = new System.Drawing.Size(100, 22);
@@ -112,6 +119,7 @@
             // 
             // eta
             // 
+            this.eta.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.eta.Location = new System.Drawing.Point(639, 201);
             this.eta.Name = "eta";
             this.eta.Size = new System.Drawing.Size(100, 22);
@@ -119,6 +127,7 @@
             // 
             // dpeers
             // 
+            this.dpeers.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dpeers.Location = new System.Drawing.Point(639, 238);
             this.dpeers.Name = "dpeers";
             this.dpeers.Size = new System.Drawing.Size(100, 22);
@@ -126,6 +135,7 @@
             // 
             // progress
             // 
+            this.progress.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.progress.Location = new System.Drawing.Point(12, 406);
             this.progress.Name = "progress";
             this.progress.Size = new System.Drawing.Size(776, 32);
@@ -133,6 +143,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(590, 241);
             this.label2.Name = "label2";
@@ -142,6 +153,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(532, 204);
             this.label3.Name = "label3";
@@ -151,6 +163,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(534, 167);
             this.label4.Name = "label4";
@@ -160,6 +173,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(520, 130);
             this.label5.Name = "label5";
@@ -169,6 +183,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(372, 298);
             this.label6.Name = "label6";
@@ -178,6 +193,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(338, 377);
             this.label7.Name = "label7";
@@ -187,8 +203,9 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(625, 9);
+            this.label8.Location = new System.Drawing.Point(642, 9);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(146, 16);
             this.label8.TabIndex = 16;
@@ -196,8 +213,9 @@
             // 
             // discordLink
             // 
+            this.discordLink.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.discordLink.AutoSize = true;
-            this.discordLink.Location = new System.Drawing.Point(625, 25);
+            this.discordLink.Location = new System.Drawing.Point(642, 25);
             this.discordLink.Name = "discordLink";
             this.discordLink.Size = new System.Drawing.Size(141, 16);
             this.discordLink.TabIndex = 17;
@@ -207,16 +225,20 @@
             // 
             // removeButton
             // 
+            this.removeButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.removeButton.BackColor = System.Drawing.Color.Red;
+            this.removeButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.removeButton.Location = new System.Drawing.Point(644, 340);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(127, 42);
             this.removeButton.TabIndex = 18;
             this.removeButton.Text = "REMOVE";
-            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.UseVisualStyleBackColor = false;
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // URDetours
             // 
+            this.URDetours.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.URDetours.Location = new System.Drawing.Point(54, 289);
             this.URDetours.Name = "URDetours";
             this.URDetours.Size = new System.Drawing.Size(134, 57);
@@ -227,6 +249,7 @@
             // 
             // URScripts
             // 
+            this.URScripts.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.URScripts.Location = new System.Drawing.Point(54, 229);
             this.URScripts.Name = "URScripts";
             this.URScripts.Size = new System.Drawing.Size(134, 54);
@@ -237,6 +260,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(9, 345);
             this.label9.Name = "label9";
