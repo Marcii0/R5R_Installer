@@ -174,23 +174,20 @@ namespace R5R_Installer
             if(Directory.Exists(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/"))
             {
                 MessageBox.Show("Hallo");
-                Thread thread = new Thread(() =>
-                {
+
                     MessageBox.Show("Hillo");
                     string rstring = RandomString(10);
                     WebClient scriptsDownloader = new WebClient();
-                    string dString = scriptsDownloader.DownloadString("https://github.com/Mauler125/r5sdk/releases/download/v2.0.2/v2.0.2_rc.zip");
+                    string dString = scriptsDownloader.DownloadString("https://api.r5rmodmanager.com/v1.php?data=detours");
                     MessageBox.Show("Detours");
                     scriptsDownloader.DownloadFile(new Uri(dString), Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip");
 
-                Thread.Sleep(1000);
 
                         var dExtract = ZipFile.Open(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip", ZipArchiveMode.Read);
                         ZipArchiveExtensions.ExtractToDirectory(dExtract, Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/", true);
                         dExtract.Dispose();
                         File.Delete(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip");
 
-                    Thread.Sleep(1000);
 
                     if (!Directory.Exists(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform"))
                     {
@@ -198,7 +195,6 @@ namespace R5R_Installer
                     }
                     scriptsDownloader.DownloadFile(new Uri("https://github.com/Mauler125/scripts_r5/archive/refs/heads/S3_N1094.zip"), Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/newscripts.zip");
 
-                    Thread.Sleep(1000);
 
                     if (Directory.Exists(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/scripts"))
                     {
@@ -213,8 +209,6 @@ namespace R5R_Installer
                     File.Delete(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/newscripts.zip");
 
                     Directory.Move(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/scripts_r5-S3_N1094", Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/scripts");
-
-                });
             }
         }
 
