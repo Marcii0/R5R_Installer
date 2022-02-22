@@ -107,6 +107,13 @@ namespace R5R_Installer
                 writer.WriteLine(Ddirectory);
             }
         }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        { 
+            bitSwarm.torrent.SaveSession();
+            MessageBox.Show("Apparently saved progress");
+        }
+
         private void BitSwarm_MetadataReceived(object source, BitSwarm.MetadataReceivedArgs e)
         {
             if (InvokeRequired)
@@ -170,6 +177,7 @@ namespace R5R_Installer
 
                 if (torrent != null && torrent.data.totalSize != 0)
                     progress.Value = e.Stats.Progress;
+                dled.Text = ((e.Stats.BytesDownloaded + e.Stats.BytesDownloadedPrevSession)/1024/1024).ToString() + " MB";
             }
 
         }
@@ -252,7 +260,7 @@ namespace R5R_Installer
                 }
                 WebClient scriptsDownloader = new WebClient();
                 string rstring = RandomString(10);
-                string dString = scriptsDownloader.DownloadString("https://api.r5rmodmanager.com/v1.php?data=detours");
+                string dString = scriptsDownloader.DownloadString("https://r5reloaded.com/api/v1.php?data=detours");
                 scriptsDownloader.DownloadFile(new Uri(dString), direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip");
 
                 var dExtract = ZipFile.Open(direcInf + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip", ZipArchiveMode.Read);

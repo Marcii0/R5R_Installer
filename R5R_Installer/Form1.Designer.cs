@@ -51,6 +51,8 @@
             this.URDetours = new System.Windows.Forms.Button();
             this.URScripts = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dled = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -269,11 +271,30 @@
             this.label9.Text = "For updating Scripts/Detours you don\'t need to select\r\n the Download Directory, y" +
     "ou just have to make\r\n sure you have Directory.txt!";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(549, 277);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 16);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Downloaded";
+            // 
+            // dled
+            // 
+            this.dled.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.dled.Location = new System.Drawing.Point(639, 274);
+            this.dled.Name = "dled";
+            this.dled.Size = new System.Drawing.Size(100, 22);
+            this.dled.TabIndex = 23;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dled);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.URScripts);
             this.Controls.Add(this.URDetours);
@@ -329,6 +350,8 @@
         private System.Windows.Forms.Button URDetours;
         private System.Windows.Forms.Button URScripts;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox dled;
     }
 }
 
