@@ -217,10 +217,10 @@ namespace R5R_Installer
                     ZipArchiveExtensions.ExtractToDirectory(scriptszip, Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/", true);
                     scriptszip.Dispose();
                     Thread.Sleep(1000);
-
                     File.Delete(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/newscripts.zip");
 
                     Directory.Move(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/scripts_r5-S3_N1094", Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform/scripts");
+                    
             }
         }
 
@@ -237,7 +237,7 @@ namespace R5R_Installer
             {
                 subd.Delete(true);
             }
-            MessageBox.Show("Removed everything in the Download folder!");
+            MessageBox.Show("Removed everything in the set Download folder!");
         }
 
         private void discordLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
