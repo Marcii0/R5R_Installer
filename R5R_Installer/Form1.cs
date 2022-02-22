@@ -125,7 +125,7 @@ namespace R5R_Installer
                 if (torrent != null) { torrent.Dispose(); torrent = null; }
 
                 MessageBox.Show("Downloaded successfully!\r\n" + "Starting detours and scripts install.");
-                StartR5RDetoursAndScripts();
+                
             }
             else
             {
@@ -170,21 +170,26 @@ namespace R5R_Installer
 
         private void StartR5RDetoursAndScripts()
         {
+            MessageBox.Show("Hello");
             if(Directory.Exists(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/"))
             {
+                MessageBox.Show("Hallo");
                 Thread thread = new Thread(() =>
                 {
+                    MessageBox.Show("Hillo");
                     string rstring = RandomString(10);
                     WebClient scriptsDownloader = new WebClient();
-                    string dString = scriptsDownloader.DownloadString("https://api.r5rmodmanager.com/v1.php?data=detours");
+                    string dString = scriptsDownloader.DownloadString("https://github.com/Mauler125/r5sdk/releases/download/v2.0.2/v2.0.2_rc.zip");
+                    MessageBox.Show("Detours");
                     scriptsDownloader.DownloadFile(new Uri(dString), Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip");
-                
+
                 Thread.Sleep(1000);
 
-                    var dExtract = ZipFile.Open(Ddirectory+ "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip", ZipArchiveMode.Read);
-                    ZipArchiveExtensions.ExtractToDirectory(dExtract, Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/", true);
-                    dExtract.Dispose();
-                    File.Delete(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip");
+                        var dExtract = ZipFile.Open(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip", ZipArchiveMode.Read);
+                        ZipArchiveExtensions.ExtractToDirectory(dExtract, Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/", true);
+                        dExtract.Dispose();
+                        File.Delete(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/detours-" + rstring + ".zip");
+
                     Thread.Sleep(1000);
 
                     if (!Directory.Exists(Ddirectory + "/R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM/platform"))
@@ -211,6 +216,12 @@ namespace R5R_Installer
 
                 });
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            StartR5RDetoursAndScripts();
+            MessageBox.Show("Starting Detours and Scripts installation!");
         }
 
         private void discordLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
