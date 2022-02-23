@@ -104,8 +104,8 @@ namespace R5R_Installer
             if (!hasStarted)
             {
                 if (!hasOpenedTorrent)
-                { 
-                    bitSwarm.Open("magnet:?xt=urn:btih:d1c162e200a441e51143ab5d85cd6adbe50eebf7&dn=PowerWash.Simulator.v0.6.rar&tr=udp://opentor.org:2710/announce&tr=udp://tracker.torrent.eu.org:451/announce&tr=udp://exodus.desync.com:6969/announce&tr=udp://tracker.moeking.me:6969/announce&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://open.stealth.si:80/announce&tr=udp://tracker.theoks.net:6969/announce&tr=udp://retracker.lanta-net.ru:2710/announce&tr=udp://movies.zsw.ca:6969/announce");
+                {
+                    bitSwarm.Open("magnet:?xt=urn:btih:KCQJQT6DV2V4XWCOKCRM4EJELRLHQKI5&dn=R5pc_r5launch_N1094_CL456479_2019_10_30_05_20_PM&tr=udp%3A%2F%2Fwambo.club%3A1337%2Fannounce");
                     hasOpenedTorrent = true;
                 }
                 bitSwarm.Start();
