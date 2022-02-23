@@ -39,17 +39,20 @@ namespace R5R_Installer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            directoryTxT = new FileStream("Directory.txt", FileMode.Open, FileAccess.ReadWrite);
-            DirectoryInfo direcInf = null;
-            using (StreamReader str = new StreamReader(directoryTxT))
+            if (File.Exists("Directory.txt"))
             {
-                direcInf = new DirectoryInfo(str.ReadLine());
-            }
-            if(direcInf.ToString() != "")
-            {
-                dialog.SelectedPath=direcInf.FullName;
-                Ddirectory=dialog.SelectedPath;
-                textBox1.Text = direcInf.FullName;
+                directoryTxT = new FileStream("Directory.txt", FileMode.Open, FileAccess.ReadWrite);
+                DirectoryInfo direcInf = null;
+                using (StreamReader str = new StreamReader(directoryTxT))
+                {
+                    direcInf = new DirectoryInfo(str.ReadLine());
+                }
+                if (direcInf.ToString() != "")
+                {
+                    dialog.SelectedPath = direcInf.FullName;
+                    Ddirectory = dialog.SelectedPath;
+                    textBox1.Text = direcInf.FullName;
+                }
             }
             LinkLabel.Link link = new LinkLabel.Link();
             link.LinkData = "https://www.discord.gg/r5reloaded";
@@ -124,9 +127,16 @@ namespace R5R_Installer
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
-        { 
-            bitSwarm.torrent.SaveSession();
-            MessageBox.Show("Apparently saved progress");
+        {
+            try
+            {
+                bitSwarm.torrent.SaveSession();
+                MessageBox.Show("Apparently saved progress");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void BitSwarm_MetadataReceived(object source, BitSwarm.MetadataReceivedArgs e)
