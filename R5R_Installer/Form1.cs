@@ -31,6 +31,7 @@ namespace R5R_Installer
         string Ddirectory;
         FileStream directoryTxT = null;
         FolderBrowserDialog dialog = new FolderBrowserDialog();
+        DialogResult result;
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +39,18 @@ namespace R5R_Installer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            directoryTxT = new FileStream("Directory.txt", FileMode.Open, FileAccess.ReadWrite);
+            DirectoryInfo direcInf = null;
+            using (StreamReader str = new StreamReader(directoryTxT))
+            {
+                direcInf = new DirectoryInfo(str.ReadLine());
+            }
+            if(direcInf.ToString() != "")
+            {
+                dialog.SelectedPath=direcInf.FullName;
+                Ddirectory=dialog.SelectedPath;
+                textBox1.Text = direcInf.FullName;
+            }
             LinkLabel.Link link = new LinkLabel.Link();
             link.LinkData = "https://www.discord.gg/r5reloaded";
             discordLink.Links.Add(link);
@@ -46,7 +59,7 @@ namespace R5R_Installer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = dialog.ShowDialog();
+            result = dialog.ShowDialog();
             if (result == DialogResult.OK)
             {
                 Ddirectory = dialog.SelectedPath;
@@ -61,6 +74,8 @@ namespace R5R_Installer
                 MessageBox.Show("You have not set a directory yet!");
                 return;
             }
+            MessageBox.Show("IF The progress bar is stuck at 99%;\n1.Close the app\n2.Open the app\n3.rechoose your download folder(The same one you chose before)\n4.press Download\n5.If it says 'The loaded session either is already completed or is invalid'\nthen just press Download & Update on Detours AND Scripts.\nNow you can open Launcher.exe");
+
             opts = new Options();
 
             opts.FolderComplete = Ddirectory;
@@ -172,12 +187,14 @@ namespace R5R_Installer
             {
                 downRate.Text = String.Format("{0:n0}", ( e.Stats.DownRate / 1024 )) + " KB/s";
                 downRateAvg.Text = String.Format("{0:n0}", ( e.Stats.AvgRate / 1024 )) + " KB/s";
-                eta.Text = TimeSpan.FromSeconds((e.Stats.ETA + e.Stats.AvgETA) / 2).ToString(@"hh\:mm\:ss");
+                eta.Text = TimeSpan.FromSeconds(e.Stats.ETA).ToString(@"hh\:mm\:ss");
                 dpeers.Text = e.Stats.PeersTotal.ToString();
 
                 if (torrent != null && torrent.data.totalSize != 0)
                     progress.Value = e.Stats.Progress;
                 dled.Text = ((e.Stats.BytesDownloaded + e.Stats.BytesDownloadedPrevSession)/1024/1024).ToString() + " MB";
+                if (e.Stats.Progress >= 98)
+                    StartR5RDetoursAndScripts();
             }
 
         }
